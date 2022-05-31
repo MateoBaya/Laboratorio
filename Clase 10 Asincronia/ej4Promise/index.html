@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Suma(a,b)
+        {
+            return new Promise((res,rej)=>{
+                let rta;
+                if(typeof a !== "number" || typeof b !== "number")
+                {
+                    rej("Parametros invalidos para la suma")
+                }
+                else
+                {
+                    setTimeout(()=>{
+                        rta=a+b;
+                        console.log("Suma es: "+rta);
+                        res(rta);
+                    },2000);
+                }
+            })
+        }
+        function Resta(a,b)
+        {
+            return new Promise((res,rej)=>{
+                let rta;
+                if(typeof a !== "number" || typeof b !== "number")
+                {
+                    rej("Parametros invalidos para la resta")
+                }
+                else
+                {
+                    setTimeout(()=>{
+                        rta=a-b;
+                        console.log("Resta es: "+rta);
+                        res(rta);
+                    },2000);
+
+                }
+            })
+        }
+        function Cuadrado(a)
+        {
+            return new Promise((res,rej)=>{
+                let rta;
+                if(typeof a !== "number")
+                {
+                    rej("Parametros invalidos para el cuadrado")
+                }
+                else
+                {
+                    setTimeout(()=>{
+                        rta=a*a;
+                        console.log("Cuadrado es: "+rta);
+                        res(rta);
+                    },2000);
+
+                }
+            })
+        }
+        function Multiplicar(a,b)
+        {
+            return new Promise((res,rej)=>{
+                let rta;
+                if(typeof a !== "number" || typeof b !== "number")
+                {
+                    rej("Parametros invalidos para la multiplicacion")
+                }
+                else
+                {
+                    setTimeout(()=>{
+                        rta=a*b;
+                        console.log("Producto es: "+rta);
+                        res(rta);
+                    },2000);
+
+                }
+            })
+        }
+        function Informar(res)
+        {
+            console.log("Resultado es: "+ res)
+        }
+        async function Calcular(a,b)
+        {
+            try
+            {
+                let suma = await Suma(a,b);
+                let cuadrado = await Cuadrado(suma);
+                let producto = await Multiplicar(cuadrado,10);
+                let resta = await Resta(producto,40);
+                Informar(resta);
+            }
+            catch(err)
+            {
+                console.error(err);
+            }
+        }
+        console.log("inicio");
+        Suma(8,5)
+        .then(suma => Cuadrado(suma))
+        .then(cuad => {
+            if(cuad>170)
+            {
+                return Promise.reject("cuadrado se paso de 170")
+            }
+            else
+            {
+                return Multiplicar(cuad,10)
+            }
+        })
+        .then(product => Resta(product,40))
+        .then(resta => Informar(resta))
+        .catch(err => console.error(err))
+        console.log("fin");
+        Calcular(8,5);
+
+    </script>
+
+</body>
+</html>

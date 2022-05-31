@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+
+        .cards{
+            display: inline-block;
+        }
+        .card{
+            background-color: black;
+
+        }
+        .card figcaption{
+            color: greenyellow;
+            padding: 10px
+        }
+
+        .rojo{
+            background-color: red;
+        }
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <h1 data-description="Este es el titulo principal">titulo principal</h1>
+
+    <ul id="frutas">
+      <li>Manzanas</li>
+      <li>Bananas</li>
+      <li>Peras</li>
+      <li>Naranajas</li>
+      <li>Melones</li>
+    </ul>
+
+    <input type="text" name="nombre" placeholder="ingrese nombre" />
+
+    <div id="miDiv"></div>
+
+    <p id="p1"></p>
+
+    <div id="divExterno">
+      <div id="texto">
+        <p id="parrafo1">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo
+          doloremque repellendus, libero labore aliquid perferendis illum
+          deleniti itaque minus et facere recusandae voluptatibus tenetur
+          necessitatibus, ipsum numquam sint ea obcaecati.
+        </p>
+        <p>
+          Magni, explicabo? Ea <strong>ladkslfk</strong> laudantium culpa nisi in natus exercitationem.
+          Dolorem rem praesentium veniam nobis doloremque officia rerum eum,
+          quibusdam error cumque magni voluptas, ducimus aspernatur, iusto cum
+          nulla minus. Similique!
+        </p>
+        <p>
+          Et asperiores neque quis explicabo ad ab debitis! Ut est, cumque ea
+          porro nostrum numquam iste, molestias esse quae mollitia rerum
+          officiis nesciunt pariatur. Itaque nisi repellendus voluptatum dolores
+          iusto.
+        </p>
+      </div>
+    </div>
+    <section class="cards">
+      <figure class="card">
+        <img
+          src="https://placeimg.com/200/200/animals"
+          alt="imagen de animal"
+        />
+        <figcaption>Animal</figcaption>
+      </figure>
+      <figure class="card">
+        <img
+          src="https://placeimg.com/200/200/tech"
+          alt="imagen de tecnologia"
+        />
+        <figcaption>Tech</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://placeimg.com/200/200/people" alt="imagen de gente" />
+        <figcaption>People</figcaption>
+      </figure>
+      <figure class="card">
+        <img
+          src="https://placeimg.com/200/200/nature"
+          alt="imagen de naturaleza"
+        />
+        <figcaption>Nature</figcaption>
+      </figure>
+    </section>
+
+    <a href="#">Google</a>
+
+    <nav>
+      <a href="#">Clarin</a>
+      <ul>
+        <li><a href="#">Clarin</a></li>
+        <li><a href="#">Infobae</a></li>
+        <li><a href="#">Pagina 12</a></li>
+      </ul>
+    </nav>
+
+    <form action=""></form>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manejo Asincronia Async-Await</title>
+  </head>
+  <body>
+    <script>
+      function sumar(a, b) {
+        return new Promise((res, rej) => {
+          let rta;
+          setTimeout(() => {
+            if (typeof a !== "number" || typeof b !== "number") {
+              rej("Parametros invalidos para la suma");
+            } else {
+              rta = a + b;
+              console.log("La suma es " + rta);
+              res(rta);
+            }
+          }, 3000);
+        });
+      }
+
+      function restar(a, b) {
+        return new Promise((res, rej) => {
+          let rta;
+          setTimeout(() => {
+            if (typeof a !== "number" || typeof b !== "number") {
+              rej("Parametros invalidos para la resta");
+            } else {
+              rta = a - b;
+              console.log("La resta es " + rta);
+              res(rta);
+            }
+          }, 2000);
+        });
+      }
+
+      function multiplicar(a, b) {
+        return new Promise((res, rej) => {
+          let rta;
+          setTimeout(() => {
+            if (typeof a !== "number" || typeof b !== "number") {
+              rej("Parametros invalidos para el producto");
+            } else {
+              rta = a * b;
+              console.log("El producto es " + rta);
+              res(rta);
+            }
+          }, 1500);
+        });
+      }
+
+      function cuadrado(a) {
+        return new Promise((res, rej) => {
+          let rta;
+          setTimeout(() => {
+            if (typeof a !== "number") {
+              rej("Parametros invalidos para el cuadrado");
+            } else {
+              rta = a * a;
+              console.log("El cuadrado es " + rta);
+              res(rta);
+            }
+          }, 3000);
+        });
+      }
+
+      function informar(resultado) {
+        console.log("El resultado es " + resultado);
+      }
+
+      // sumar 8 y 5, al resultado calcular el cuadrado, al cuadrado multiplicarlo
+      // por 10 y al resultado restarle 40 e informar por consola el resultado final
+
+      const calcular = async (a, b) => {
+        try {
+          let suma = await sumar(a, b);
+          let cuad = await cuadrado(suma);
+          let producto = await multiplicar(cuad, 10);
+          let resta = await restar(producto, 40);
+          informar(resta);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      console.log("Inicio");
+
+      calcular(8, 5);
+
+      console.log("Fin");
+    </script>
+  </body>
+</html>

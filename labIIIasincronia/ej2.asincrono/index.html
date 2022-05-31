@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manejo Asincronico</title>
+  </head>
+  <body>
+    <script>
+      function sumar(a, b) {
+        let rta;
+        setTimeout(() => {
+          rta = a + b;
+          console.log("La suma es " + rta);          
+        }, 3000);      
+        return rta;
+      }
+
+      function restar(a, b) {
+        let rta;
+        setTimeout(() => {
+          rta = a - b;
+          console.log("La resta es " + rta);          
+        }, 1000);      
+        return rta;
+      }
+
+      function multiplicar(a, b) {
+        let rta;
+        setTimeout(() => {
+          rta = a * b;
+          console.log("El producto es " + rta);          
+        }, 1000);      
+        return rta;
+      }
+
+      function cuadrado(a) {
+        let rta;
+        setTimeout(() => {
+          rta = a * a;
+          console.log("El cuadrado es " + rta);          
+        }, 3000);      
+        return rta;
+      }
+
+      function informar(resultado) {
+        console.log("El resultado es " + resultado);
+      }
+
+      // sumar 8 y 5, al resultado calcular el cuadrado, al cuadrado multiplicarlo
+      // por 10 y al resultado restarle 40 e informar por consola el resultado final
+
+      console.log("Inicio");
+
+      let suma = sumar(8, 5);
+      let cuad = cuadrado(suma);
+      let producto = multiplicar(cuad, 10);
+      let resta = restar(producto, 40);
+      informar(resta);
+
+      console.log("Fin");
+    </script>
+  </body>
+</html>

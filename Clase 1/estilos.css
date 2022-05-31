@@ -1,0 +1,29 @@
+p{
+  color : aquamarine;  
+}
+span{
+    color: blue;
+}
+td,th{
+  border:1px solid violet;
+}
+td{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /*padding: 10px; es lo mismo*/
+  /*padding: (top)10px (right)20px (bottom)30px (left)5px*/
+  /*padding: (top bottom)10px (left right)30px*/
+  /*margin: 32;*/
+}
+li{
+  display: inline;
+}
+table{
+  border-collapse:  collapse;
+}
+.zeratul
+{
+  height: 50px;
+}

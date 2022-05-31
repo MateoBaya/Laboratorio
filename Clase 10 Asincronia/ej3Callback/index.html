@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Suma(a,b,callback)
+        {
+            let rta;
+            try
+            {
+                if(typeof a !== "number" || typeof b !== "number" || typeof callback !== "function")
+                {
+                    throw Error("parmetros invalidos para suma");
+                }
+                setTimeout(()=>{
+                    rta=a+b;
+                    console.log("Suma es: "+rta);
+                    callback(rta);
+                },2000);
+                return rta;
+            }
+            catch(error)
+            {
+                console.log(error.message)
+            }
+        }
+        function Resta(a,b,callback)
+        {
+            let rta;
+            try
+            {
+                if(typeof a !== "number" || typeof b !== "number" || typeof callback !== "function")
+                {
+                    throw Error("parmetros invalidos para resta");
+                }
+                
+                setTimeout(() => {
+                    rta=a-b;
+                    console.log("Resta es: "+rta);
+                    callback(rta);
+                }, 1500);
+                return rta;
+            }
+            catch(error)
+            {
+                console.log(error.message)
+            }
+        }
+        function Cuadrado(a,callback)
+        {
+            let rta;
+            try
+            {
+                if(typeof a !== "number" || typeof callback !== "function")
+                {
+                    throw Error("parmetros invalidos para cuadrado");
+                }
+                setTimeout(() => {
+                    rta=a*a;
+                    console.log("Cuadrado es: "+rta);
+                    callback(rta);
+                }, 3000);
+                return rta;        
+                
+            }
+            catch(error)
+            {
+                console.log(error.message)
+            }
+        }
+        function Multiplicar(a,b,callback)
+        {
+            let rta;
+            try
+            {
+                if(typeof a !== "number" || typeof b !== "number" || typeof callback !== "function")
+                {
+                    throw Error("parmetros invalidos para multiplicacion");
+                }
+                
+                setTimeout(() => {
+                    rta=a*b;
+                    console.log("Multiplicacion es: "+rta);
+                    callback(rta);
+                }, 1000);
+                return rta;        
+            }
+            catch(error)
+            {
+                console.log(error.message)
+            }
+        }
+        function Informar(res)
+        {
+            console.log("Resultado es: "+ res)
+        }
+        console.log("inicio");
+        Suma(8,5,(sumar)=>{
+            Cuadrado(sumar,(cuadrado)=>{
+                Multiplicar(cuadrado,10,(producto)=>{
+                    Resta(producto,40,(resto)=>{
+                        Informar(resto);
+                    });
+                });
+            });
+        });
+        console.log("fin");
+
+
+    </script>
+
+</body>
+</html>

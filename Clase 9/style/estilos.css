@@ -1,0 +1,80 @@
+table{
+    border-collapse:  collapse;
+    width:95%;
+  }
+th,td{
+    border:1px solid violet;
+    padding : 10px;
+}
+.numeroPar{
+    background-color:blueviolet
+}
+.numeroImpar{
+    background-color:brown
+}
+th{
+    font-size: 2rem;
+    background-color: aqua;
+}
+tr.numeroImpar:hover,
+tr.numeroPar:hover{
+    background-color: blue;
+    color:aliceblue;
+}
+.container{
+    margin:0 auto;
+    width: 75%;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+.form-container{
+    width: 40%;
+    align-self: center;
+    padding: 1%;
+}
+.form-container>fieldset fieldset{
+    border-style: hidden;
+}
+#fieldSexo{
+    width:max-content;
+    align-self: center;
+}
+.table-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom:2%;
+}
+.form-personas{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.form-personas input{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color:lightblue;
+    border-style: hidden;
+}
+#submit-personas,#btnEliminar,#btnCancelar{
+    color:white;
+    border-radius: 5px;
+}
+#submit-personas{
+    background-color:olive;
+}
+#btnEliminar{
+    background-color: red;
+}
+#btnCancelar{
+    background-color:darkslateblue;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manejo Asincronia Callbacks</title>
+  </head>
+  <body>
+    <script>
+      function sumar(a, b, callback) {
+        let rta;
+        setTimeout(() => {
+          try {
+            if (
+              typeof a !== "number" ||
+              typeof b !== "number" ||
+              typeof callback !== "function"
+            ) {
+              throw Error("Parametros invalidos para la suma");
+            }
+
+            rta = a + b;
+            console.log("La suma es " + rta);
+            callback(rta);
+          } catch (err) {
+            console.error(err.message);
+          }
+        }, 3000);
+      }
+
+      function restar(a, b, callback) {
+        let rta;
+        setTimeout(() => {
+          try {
+            if (
+              typeof a !== "number" ||
+              typeof b !== "number" ||
+              typeof callback !== "function"
+            ) {
+              throw Error("Parametros invalidos para la resta");
+            }
+
+            rta = a - b;
+            console.log("La resta es " + rta);
+            callback(rta);
+          } catch (err) {
+            console.error(err.message);
+          }
+        }, 1000);
+      }
+
+      function multiplicar(a, b, callback) {
+        let rta;
+        setTimeout(() => {
+          try {
+            if (
+              typeof a !== "number" ||
+              typeof b !== "number" ||
+              typeof callback !== "function"
+            ) {
+              throw Error("Parametros invalidos para el producto");
+            }
+
+            rta = a * b;
+            console.log("El producto es " + rta);
+            callback(rta);
+          } catch (err) {
+            console.error(err.message);
+          }
+        }, 1000);
+      }
+
+      function cuadrado(a, callback) {
+        let rta;
+        setTimeout(() => {
+          try {
+            if (typeof a !== "number" || typeof callback !== "function") {
+              throw Error("Parametros invalidos para el cuadrado");
+            }
+
+            rta = a * a;
+            console.log("El cuadrado es " + rta);
+            callback(rta);
+          } catch (err) {
+            console.error(err.message);
+          }
+        }, 3000);
+      }
+
+      function informar(resultado) {
+        console.log("El resultado es " + resultado);
+      }
+
+      // sumar 8 y 5, al resultado calcular el cuadrado, al cuadrado multiplicarlo
+      // por 10 y al resultado restarle 40 e informar por consola el resultado final
+
+      console.log("Inicio");
+
+      sumar(8, 5, (suma) => {
+        cuadrado(suma, (cuad) => {
+          multiplicar(cuad, 10, (producto) => {
+            restar(producto, 40, (resta) => {
+              informar(resta);
+            });
+          });
+        });
+      });
+
+      console.log("Fin");
+    </script>
+  </body>
+</html>

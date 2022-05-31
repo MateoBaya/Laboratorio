@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>
+                Crud Empleados
+            </h1>
+        </header>
+        <main class="main">
+            <section class="form-container">
+                <h2>Alta empleado</h2>
+                <fieldset>
+                    <legend>Personas</legend>
+                    <form action="" class="form-personas">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" autocomplete="off">
+                        <label for="edad">Edad:</label>
+                        <input type="number" name="edad" id="edad" placeholder="Ingrese su edad" autocomplete="off" min="18" max="65">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder="Ingrese su email" autocomplete="off">
+                        <fieldset id="fieldSexo">
+                            <legend>Sexo:</legend>
+                            <input type="radio" name="sexo" id="sexo" value="masculino" checked>Masculino
+                            <br>
+                            <input type="radio" name="sexo" id="sexo" value="femenino">Femenino
+                        </fieldset>
+                        <br>
+                        <input type="hidden" name="id" value=""/>
+                        <div id="form-buttons">
+                            <input type="submit" id="submit-personas" value="Guardar"/>
+                            <input type="button" id="btnEliminar" value="Eliminar" hidden="true">
+                            <input type="button" id="btnCancelar" value="Cancelar" hidden="true">
+                        </div>
+                            
+                    </form>
+                </fieldset>
+            </section>
+            <section class="table-container"></section>
+        </main>
+    </div>
+    <script src="./scripts/app.js" type="module"></script>
+</body>
+</html>

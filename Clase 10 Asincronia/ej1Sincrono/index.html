@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Suma(a,b)
+        {
+            suma=a+b;
+            console.log("Suma es: "+suma);
+            return suma;
+        }
+        function Resta(a,b)
+        {
+            resta=a-b;
+            console.log("Resta es: "+resta);
+            return resta;        
+        }
+        function Cuadrado(a)
+        {
+            cuad=a*a;
+            console.log("Cuadrado es: "+cuad);
+            return cuad;        
+        }
+        function Multiplicar(a,b)
+        {
+            multi=a*b;
+            console.log("Multiplicacion es: "+multi);
+            return multi;        
+        }
+        function Informar(res)
+        {
+            console.log("Resultado es: "+ res)
+        }
+        let sumar = Suma(8,5);
+        let cuadradoo = Cuadrado(suma);
+        let producto = Multiplicar(cuad,10);
+        let resto = Resta(producto,40);
+        Informar(resto);
+
+    </script>
+
+</body>
+</html>

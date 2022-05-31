@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Suma(a,b)
+        {
+            let rta;
+            setTimeout(()=>{
+                rta=a+b;
+                console.log("Suma es: "+rta);
+            },2000)
+            return rta;
+        }
+        function Resta(a,b)
+        {
+            let rta;
+            setTimeout(() => {
+                rta=a-b;
+                console.log("Resta es: "+rta);
+            }, 1500);
+            return rta;        
+        }
+        function Cuadrado(a)
+        {
+            let rta;
+            setTimeout(() => {
+                rta=a*a;
+                console.log("Cuadrado es: "+rta);
+            }, 3000);
+            return rta;        
+        }
+        function Multiplicar(a,b)
+        {
+            let rta;
+            setTimeout(() => {
+                rta=a*b;
+                console.log("Multiplicacion es: "+rta);
+            }, 1000);
+            return rta;        
+        }
+        function Informar(res)
+        {
+            console.log("Resultado es: "+ res)
+        }
+        console.log("inicio");
+        let sumar = Suma(8,5);
+        let cuadrado = Cuadrado(sumar);
+        let producto = Multiplicar(cuadrado,10);
+        let resto = Resta(producto,40);
+        Informar(resto);
+        console.log("fin");
+
+
+    </script>
+
+</body>
+</html>
