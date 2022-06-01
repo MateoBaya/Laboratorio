@@ -1,3 +1,7 @@
+*{
+    padding:0px;
+    margin: 0px;
+}
 table{
     border-collapse:  collapse;
     width:95%;
@@ -7,13 +11,14 @@ th,td{
     padding : 10px;
 }
 .numeroPar{
-    background-color:blueviolet
+    background-color:blueviolet;
+    color:cornsilk;
 }
 .numeroImpar{
     background-color:brown
 }
 th{
-    font-size: 2rem;
+    font-size: 1rem;
     background-color: aqua;
 }
 tr.numeroImpar:hover,
@@ -22,18 +27,25 @@ tr.numeroPar:hover{
     color:aliceblue;
 }
 .container{
+    padding:70px 0px;
     margin:0 auto;
-    width: 75%;
+    width: 100%;
 }
-
 .main{
     display: flex;
     flex-direction: column;
+    
 }
 
 .header{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+.header>img{
+    padding: 10px 0px;
+    width: 100%;
 }
 .form-container{
     width: 40%;
@@ -43,9 +55,10 @@ tr.numeroPar:hover{
 .form-container>fieldset fieldset{
     border-style: hidden;
 }
-#fieldSexo{
+#fieldTransaccion{
     width:max-content;
     align-self: center;
+    
 }
 .table-container{
     width: 100%;
@@ -53,23 +66,23 @@ tr.numeroPar:hover{
     justify-content: center;
     padding-bottom:2%;
 }
-.form-personas{
+.form-auto{
     display: flex;
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.form-personas input{
+.form-auto input{
     padding: 10px;
     margin: 5px;
     border-radius: 10px;
     background-color:lightblue;
     border-style: hidden;
 }
-#submit-personas,#btnEliminar,#btnCancelar{
+#submit-auto,#btnEliminar,#btnCancelar{
     color:white;
     border-radius: 5px;
 }
-#submit-personas{
+#submit-auto{
     background-color:olive;
 }
 #btnEliminar{
@@ -77,4 +90,53 @@ tr.numeroPar:hover{
 }
 #btnCancelar{
     background-color:darkslateblue;
+}
+#logo{
+    width: 70px;
+}
+nav{
+    max-height: 50px;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    
+}
+header>nav{
+    position:fixed;
+    top:0;
+    width:100%;    
+    justify-content: space-around;
+
+}
+footer>nav{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    justify-content: space-between;
+}
+nav p{
+    align-self: center;
+    padding:10px;
+}
+nav>ul{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    border: 0px;
+    padding: 10px;
+    height: 100%;
+
+}
+nav>ul>li{
+    padding: 10px;
+    height: 100%;
+}
+nav>ul>li:hover{
+    background-color: antiquewhite;
+}
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 }

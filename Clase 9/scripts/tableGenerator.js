@@ -1,7 +1,6 @@
 export function TableGenerator(array)
 {
     const table = document.createElement("table");
-    ///table.setAttribute("border-collapse","collapse");
 
     table.appendChild(HeaderGenerator(array[0]));
 
@@ -9,6 +8,7 @@ export function TableGenerator(array)
 
     return table;
 }
+
 function HeaderGenerator(headerValues)
 {
     const thead = document.createElement("thead"),

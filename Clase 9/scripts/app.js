@@ -1,17 +1,18 @@
-import { gente } from "../data/datos.js";
 import { TableGenerator } from "./tableGenerator.js";
-import Persosna from "./persona.js";
-import Persona from "./persona.js";
+import Auto from "./auto.js";
 const table = document.querySelector(".table-container");
-const personasBackup = localStorage.getItem("personas")?JSON.parse(localStorage.getItem("personas")):[];
-let personas = personasBackup;
-const formPersona = document.querySelector(".form-personas");
+const autosBackup = localStorage.getItem("autos")?JSON.parse(localStorage.getItem("autos")):[];
+let autos = autosBackup;
+const formAuto = document.querySelector(".form-auto");
 const btnEliminar = document.getElementById("btnEliminar");
 const btnCancelar = document.getElementById("btnCancelar");
-actualizarTabla(personas);
-
+const img = document.getElementById("logo");
+const body = document.querySelector("body");
+const container=document.querySelector(".container");
+body.removeChild(container);
+actualizarTabla(autos);
 // SUBMIT CAMBIADO
-formPersona.addEventListener("submit",(e)=>{
+formAuto.addEventListener("submit",(e)=>{
     e.preventDefault();
     
     if(btnEliminar.hidden && btnCancelar.hidden)
@@ -19,14 +20,16 @@ formPersona.addEventListener("submit",(e)=>{
 
         try
         {
-            const persona = new Persona(Date.now(),formPersona.nombre.value,formPersona.edad.value,formPersona.email.value,formPersona.sexo.value);
-            if(personas!=null)
+            const auto = new Auto(Date.now(),formAuto.titulo.value,formAuto.precio.value,
+            formAuto.descripcion.value,formAuto.transaccion.value,formAuto.puertas.value,
+            formAuto.km.value,formAuto.potencia.value);
+            if(autos!=null)
             {
-                personas.push(persona);
+                autos.push(auto);
             }
             else
             {
-                personas = new Array(persona);
+                autos = new Array(auto);
             }
         }
         catch(e)
@@ -36,16 +39,20 @@ formPersona.addEventListener("submit",(e)=>{
     }
     else
     {
-        modifyRow(searchRow(formPersona.id.value),[formPersona.nombre.value,formPersona.edad.value,formPersona.email.value,formPersona.sexo.value]);
+        modifyRow(searchRow(formAuto.id.value),[formAuto.titulo.value,formAuto.precio.value,formAuto.descripcion.value,
+            formAuto.transaccion.value,formAuto.puertas.value,formAuto.km.value,formAuto.potencia.value]);
         saveToLocalStorage();
     }
-    localStorage.setItem("personas",JSON.stringify(personas));
-    formPersona.nombre.value="";
-    formPersona.edad.value="";
-    formPersona.email.value="";
-    formPersona.sexo.value="";
-    formPersona.id.value="";
-    actualizarTabla(personas);
+    localStorage.setItem("autos",JSON.stringify(autos));
+    formAuto.titulo.value="";
+    formAuto.precio.value="";
+    formAuto.descripcion.value="";
+    formAuto.transaccion.value="";
+    formAuto.id.value="";
+    formAuto.puertas.value="";
+    formAuto.km.value="";
+    formAuto.potencia.value="";
+    actualizarTabla(autos);
 });
 
 function modifyRow(row,values)
@@ -68,9 +75,9 @@ function modifyRow(row,values)
 
 function saveToLocalStorage()
 {
-    const personasLeidas = JSON.parse(JSON.stringify(readAllRows()));
-    localStorage.setItem("personas",JSON.stringify(personasLeidas));
-    personas = localStorage.getItem("personas")?JSON.parse(localStorage.getItem("personas")):[];
+    const autosLeidos = JSON.parse(JSON.stringify(readAllRows()));
+    localStorage.setItem("autos",JSON.stringify(autosLeidos));
+    autos = localStorage.getItem("autos")?JSON.parse(localStorage.getItem("autos")):[];
 }
 
 // CLICK EN TBODY
@@ -78,11 +85,14 @@ window.addEventListener("click",(e)=>{
     if(e.target.matches("tr td")){
         const row = e.target.parentElement;
         const array = readRow(row);
-        formPersona.id.value=array[0];
-        formPersona.nombre.value=array[1];
-        formPersona.edad.value=array[2];
-        formPersona.email.value=array[3];
-        formPersona.sexo.value=array[4];
+        formAuto.id.value=array[0];
+        formAuto.titulo.value=array[1];
+        formAuto.precio.value=array[2];
+        formAuto.descripcion.value=array[3];
+        formAuto.transaccion.value=array[4];
+        formAuto.puertas.value=array[5];
+        formAuto.km.value=array[6];
+        formAuto.potencia.value=array[7];
         btnEliminar.hidden=false;
         btnCancelar.hidden=false;
     }
@@ -91,54 +101,78 @@ window.addEventListener("click",(e)=>{
 
 // BOTON ELIMINAR CLICK
 btnEliminar.addEventListener("click",(e)=>{
-    let row = searchRow(formPersona.id.value);
+    let row = searchRow(formAuto.id.value);
     row.parentElement.removeChild(row);
     saveToLocalStorage();
-    actualizarTabla(personas);
+    actualizarTabla(autos);
 });
 
 // BOTON CANCELAR CLICK
 btnCancelar.addEventListener("click",(e)=>{
-    formPersona.nombre.value="";
-    formPersona.edad.value="";
-    formPersona.email.value="";
-    formPersona.sexo.value="";
-    formPersona.id.value="";
+    formAuto.titulo.value="";
+    formAuto.precio.value="";
+    formAuto.descripcion.value="";
+    formAuto.transaccion.value="";
+    formAuto.id.value="";
+    formAuto.puertas.value="";
+    formAuto.km.value="";
+    formAuto.potencia.value="";
     btnEliminar.hidden=true;
     btnCancelar.hidden=true;
 
 });
 
+const navAnuncios = document.getElementById("anuncios");
+// NAV ANUNCIOS
+navAnuncios.addEventListener("click",(e)=>{
+    body.appendChild(container);
+    actualizarTabla(autos);
+    body.setAttribute("background-image","none");
+});
+
+// LOGO
+img.addEventListener("click",(e)=>{
+    body.removeChild(container);
+    body.setAttribute("background-image","url('../assets/cars.jpg')");
+
+})
+;
 
 // RECREA LA TABLA CON LOS CONTENIDOS EN LISTA
 function actualizarTabla(lista)
 {
-    document.getElementById("btnEliminar").hidden=true;
-    document.getElementById("btnCancelar").hidden=true;
-    const container = document.querySelector('.table-container');
-    while(container.children.length>0){
-        container.removeChild(container.firstElementChild);
-    }
-    try
+    if(body.contains(container))
     {
-        container.appendChild(createSpinner());
-        let generacionTabla = setTimeout(() => {
-
-            container.appendChild(TableGenerator(lista));
-        }, 1000);
-        deleteSpinner(generacionTabla,container);
-    }
-    catch(e)
-    {
-        console.log("No tiene datos en LocalStorage");
+        document.getElementById("btnEliminar").hidden=true;
+        document.getElementById("btnCancelar").hidden=true;
+        const container = document.querySelector('.table-container');
+        while(container.children.length>0){
+            container.removeChild(container.firstElementChild);
+        }
+        try
+        {
+            container.appendChild(createSpinner());
+            let generacionTabla = setTimeout(() => {
+                
+                container.appendChild(TableGenerator(lista));
+            }, 1000);
+            deleteSpinner(container);
+        }
+        catch(e)
+        {
+            console.log("No tiene datos en LocalStorage");
+        }
     }
 }
-async function deleteSpinner(tableDelayed,container)
+async function deleteSpinner(container)
 {
-    await(tableDelayed);
-    setTimeout(() => {
-        container.removeChild(document.getElementById("divSpinner"));
-    }, 100);
+    if(body.contains(container))
+    {
+        setTimeout(() => {
+            container.removeChild(document.getElementById("divSpinner"));
+        }, 1000);
+    }
+
 }
 
 function createSpinner()
@@ -152,10 +186,10 @@ function createSpinner()
     return div;
 }
 
-// CONVIERTE ARRAY A PERSONA
-function arrayToPersona(array)
+// CONVIERTE ARRAY A AUTO
+function arrayToAuto(array)
 {
-    return new Persona(array[0],array[1],array[2],array[3],array[4])
+    return new Auto(array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7])
 }
 
 // DEVUELVE ARRAY DE LOS CONTENIDOS DE ARRAY
@@ -203,7 +237,7 @@ function readAllRows()
     let array = new Array();
     while(row != null)
     {
-        array.push(arrayToPersona(readRow(row)));
+        array.push(arrayToAuto(readRow(row)));
         row = row.nextElementSibling;
     }
     return array;
